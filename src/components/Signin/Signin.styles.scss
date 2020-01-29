@@ -1,8 +1,24 @@
+$breakpoint-tablet: 1250px;
+
 .sign-in {
-    width: 30vw;
+    width: 40vw;
     display: flex;
     flex-direction: column;
+    margin: auto 0 auto;
     .title {
         margin: 10px 0;
     }
+    .sign-in-buttons {
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-start;
+    }
+    @media (max-width: $breakpoint-tablet) {
+        .sign-in-buttons {
+            display: flex;
+            flex-flow: column;
+            justify-content: flex-start; 
+        }
+    }
+
 }
