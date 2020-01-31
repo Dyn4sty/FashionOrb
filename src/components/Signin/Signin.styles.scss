@@ -1,10 +1,11 @@
 $breakpoint-tablet: 1250px;
 
 .sign-in {
-    width: 40vw;
+    width: auto;
     display: flex;
     flex-direction: column;
     margin: auto 0 auto;
+    text-align: center;
     .title {
         margin: 10px 0;
     }
