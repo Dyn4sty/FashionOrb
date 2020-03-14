@@ -4,6 +4,7 @@ import CustomButton from '../custom-button/custom-button';
 import {signInWithGoogle} from '../../firebase/firebase.utils';
 import GoogleButton from 'react-google-button';
 import { auth } from '../../firebase/firebase.utils';
+import swal from 'sweetalert';
 import './Signin.styles.scss'
 class SignIn extends React.Component {
     constructor(props) {
@@ -25,15 +26,14 @@ class SignIn extends React.Component {
             const errorCode = error.code;
             const errorMessage = error.message;
             if (errorCode === 'auth/wrong-password') {
-                alert('Wrong password.');
+                swal("Oops" ,  'Wrong password.' ,  "error" )
               } else {
-                alert(errorMessage);
+                swal("Oops" ,  errorMessage ,  "error" )
               }
               console.log(error);
         }
     }
-    handleChange = event => {
-        const { value, name} = event.target
+    handleChange = ({ target: { name, value } }) => {
         this.setState({ [name]: value })
     }
 

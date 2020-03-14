@@ -8,6 +8,12 @@ class ShopPage extends React.Component {
             collections : SHOP_DATA
         }
     }
+    componentDidMount() {
+        fetch('http://localhost/api.php?action=show')
+        .then(data => data.text())
+        .then(data => console.log(data))
+
+    }
     render() {
         const {collections} = this.state
         return (

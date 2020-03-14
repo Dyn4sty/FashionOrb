@@ -19,7 +19,6 @@ class SignUp extends React.Component {
     }
  
     handleSubmit = async event => {
-        console.log(this.state)
         event.preventDefault()
         if (!this.state.displayName || !this.state.email || !this.state.password || this.state.password !== this.state.confirmPassword) {
             swal("Oops" ,  'Invalid Fields' ,  "error" )
@@ -48,8 +47,7 @@ class SignUp extends React.Component {
         
     }
 
-    handleChange = (event) => {
-        const {name, value} = event.target
+    handleChange = ({ target: { name, value } }) => {
         this.setState({ [name]: value })
     }
     render() {
@@ -93,7 +91,7 @@ class SignUp extends React.Component {
                     required 
                     />
                     <div className="sign-in-buttons">
-                    <CustomButton type="submit">Sign in</CustomButton>
+                    <CustomButton type="submit">Sign Up</CustomButton>
                     </div>
                 </form>
 
