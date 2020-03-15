@@ -11,7 +11,27 @@
   right: 40px;
   z-index: 5;
   visibility: hidden;
-  
+    
+  .empty-message {
+    font-size: 18px;
+    margin: 50px auto;
+    visibility: hidden;
+  }
+
+
+  .cart-items {
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+
+  }
+
+  button {
+    margin-top: auto;
+    visibility: hidden;
+
+  }
   /* This timing applies on the way OUT */
   transition-timing-function: ease-in;
 
@@ -21,17 +41,6 @@
   /* Hide thing by pushing it outside by default */
   transform: translateY(-130%);
 
-
-  .cart-items {
-    height: 240px;
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-  }
-
-  button {
-    margin-top: auto;
-  }
 }
 
 .cart-dropdown-is-shown {
@@ -47,12 +56,15 @@
   right: 40px;
   z-index: 5;
   transition-timing-function: ease-out;
-
-  /* A litttttle slower on the way in */
   transition: 0.25s;
-  
   /* Move into place */
   transform: translateY(0);
+  
+  .empty-message {
+    font-size: 18px;
+    margin: 50px auto;
+  }
+
 
   .cart-items {
     height: 240px;
