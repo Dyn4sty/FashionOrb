@@ -12,7 +12,7 @@
     .logo {
       width: 6.3vw;
       height: auto;
-      min-width: 90px;
+      min-width: 70px;
       min-height: 35px;
       margin-right: auto;
     }
@@ -32,3 +32,20 @@
     }
   }
 }
+
+
+@media screen and (max-width: 800px) {
+  .header { 
+      height: 60px;
+      margin-bottom: 20px;
+      padding: 10px;
+
+    .logo-container {
+      width: 50px;
+      padding: 0px;
+      }
+      .options {
+          width: 80%;
+      }
+  }
+  }
