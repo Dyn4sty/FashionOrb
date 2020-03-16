@@ -20,6 +20,9 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     );
   
     if (existingCartItem) {
+      // FiLtering through the `CartItems`
+      // Removing Cart Items that's under 1 Quantity.
+      // Decrementing `Cartitem`.
       return cartItems.filter(cartItem =>
         cartItem.id !== cartItemToRemove.id || cartItem.quantity > 1
       ).map(cartItem =>
