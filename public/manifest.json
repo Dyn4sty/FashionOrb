@@ -1,5 +1,5 @@
 {
-  "short_name": "React App",
+  "short_name": "Fashion Orb",
   "name": "Create React App Sample",
   "icons": [
     {
@@ -15,6 +15,11 @@
     {
       "src": "logo512.png",
       "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "Orb.svg",
+      "type": "image/svg",
       "sizes": "512x512"
     }
   ],

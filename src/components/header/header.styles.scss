@@ -8,8 +8,16 @@
   .logo-container {
     height: 100%;
     width: 70px;
-    padding: 25px;
+    // padding: 25px;
+    .logo {
+      width: 6.3vw;
+      height: auto;
+      min-width: 90px;
+      min-height: 35px;
+      margin-right: auto;
+    }
   }
+
 
   .options {
     width: 50%;
