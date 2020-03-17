@@ -36,7 +36,6 @@ class SignIn extends React.Component {
     handleChange = ({ target: { name, value } }) => {
         this.setState({ [name]: value })
     }
-
     render() {
         return(
             <div className='sign-in'>

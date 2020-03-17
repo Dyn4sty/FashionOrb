@@ -12,13 +12,13 @@ const carouselItems = [
   },
   {
     src:
-      "https://images.unsplash.com/photo-1573855619003-97b4799dcd8b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9",
+      "https://i1.adis.ws/i/missguided/Maternity_10_03_desktop.webp?bg=rgb(254,245,240)&w=1905&qlt=60&fmt.jpeg.interlaced=true&upscale=false    ",
     altText: "Slide 2",
     caption: ""
   },
   {
     src:
-      "https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9",
+      "https://i1.adis.ws/i/missguided/Spring_10_03_desktop?bg=rgb(254,245,240)&w=1920&qlt=60&fmt.jpeg.interlaced=true&upscale=false",
     altText: "Slide 3",
     caption: ""
   }

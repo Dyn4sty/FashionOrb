@@ -4,6 +4,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Header from './components/header/header';
+import Footer from './components/footer/Footer'
 import HomePage from './pages/homepage/homepage';
 import ShopPage from './pages/shop/shop';
 import CheckoutPage from './pages/checkout/checkout'
@@ -44,6 +45,7 @@ class App extends React.Component {
   return (
     <React.Fragment>
       <Header/>
+      <Footer/>
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route path='/shop' component={ShopPage} />
@@ -53,6 +55,7 @@ class App extends React.Component {
         <Redirect to='/' />
         ) : (<SignInAndRegister />)}
        />
+       
       </Switch>
     </React.Fragment>
 

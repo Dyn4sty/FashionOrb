@@ -6,7 +6,7 @@ import MyCarousel from '../../components/Carousel/Carousel'
 const HomePage = () => {
   return (
     
-  <div className='homepage'>
+  <div className='container-fluid homepage'>
       <MyCarousel />
       <Directory/>
   </div>
