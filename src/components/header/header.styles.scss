@@ -4,8 +4,11 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
-  background: #000000de;
+  background: white;
   transition: all .8s ease 0s;
+
+
+  //Header Media Query
   @media screen and (max-width: 800px) {
     padding: 0;
     .logo-container {
@@ -14,27 +17,16 @@
       }
       .options {
           width: 80%;
+          color:black
       }
   }
-  &.fixed {
-      position: sticky;
-      z-index: 5;
-      // background-color: #fcfcfc;
-      box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.09);
-      // transition-timing-function: ease-out;
-      // padding: 10px;
-      top: 0;
-      /* Quick on the way out */
-      // transition: 1s;
-    
-      /* Hide thing by pushing it outside by default */
-      // transform: translateY(0);
-  }
+
   .logo-container {
     height: auto;
     width: auto;
     .st0 {
-      fill: #c6c6c6 !important;
+      fill: #423148;
+      
   }
     // padding: 25px;
     .logo {
@@ -45,6 +37,7 @@
       margin-right: auto;
     }
   }
+
   .options {
     width: 50%;
     height: 100%;
@@ -52,16 +45,33 @@
     align-items: center;
     justify-content: flex-end;
 
-
-    @media screen and (max-width: 800px) {
-      width: auto;
-    }
-
     .option {
       padding: 10px 15px;
       cursor: pointer;
-      color: white;
+      color: black;
+    }
+    // Options Media Query
+    @media screen and (max-width: 800px) {
+      width: auto;
     }
   }
+  
+  &.fixed {
+    position: sticky;
+    z-index: 5;
+    background: #000000de;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.09);
+    top: 0;
+      .st0 {
+        fill: #c6c6c6 !important;
+      }
+    .options{
+      color: white;
+
+      .option{
+        color: white;
+      }
+    }
+}
 }
 
