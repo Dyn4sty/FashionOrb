@@ -22,6 +22,7 @@ const CollectionItem = ({item, addItem, openAndCloseCart}) => {
         </div>
         <CustomButton inverted onClick={() => {
             openAndCloseCart(false)
+            setTimeout(() => openAndCloseCart(true), 4000)
             addItem(item)
         }
         }> Add to Cart</CustomButton>
