@@ -4,7 +4,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Header from './components/header/header';
-import Footer from './components/footer/Footer'
+// import Footer from './components/footer/Footer'
 import HomePage from './pages/homepage/homepage';
 import ShopPage from './pages/shop/shop';
 import CheckoutPage from './pages/checkout/checkout'
@@ -56,7 +56,6 @@ class App extends React.Component {
        />
        
       </Switch>
-      <Footer/>
     </React.Fragment>
 
     );

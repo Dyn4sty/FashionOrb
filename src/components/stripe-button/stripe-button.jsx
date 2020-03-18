@@ -1,12 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { clearCart } from '../../redux/cart/cart.actions';
+import { withRouter } from 'react-router-dom'
 import StripeCheckout from 'react-stripe-checkout';
 import swal from 'sweetalert';
-const StripeCheckoutButton = ({ price }) => {
+const StripeCheckoutButton = ({ price, dispatch, history}) => {
     const priceForStripe = price * 100
     const publishableKey = 'pk_test_ghjMMq6QNw2yKFSPwbdgL8CV00i3EAIXXG'
 
     const onToken = token => {
+        dispatch(clearCart())
         swal("Good Job" ,  'Your Transaction is Now Completed' ,  "success" )
+        setTimeout(() => history.push('/'), 1000)
     }
     return (
         <StripeCheckout
@@ -26,4 +31,4 @@ const StripeCheckoutButton = ({ price }) => {
     )
 }
 
-export default StripeCheckoutButton
+export default withRouter(connect()(StripeCheckoutButton))
