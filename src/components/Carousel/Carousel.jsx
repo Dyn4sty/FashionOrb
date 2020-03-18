@@ -12,7 +12,7 @@ const carouselItems = [
   },
   {
     src:
-      "https://i1.adis.ws/i/missguided/Maternity_10_03_desktop.webp?bg=rgb(254,245,240)&w=1905&qlt=60&fmt.jpeg.interlaced=true&upscale=false    ",
+      "https://www.forever21.com/images/f21/us/en/web/20200207/0305_SpringVacay_D_M_200516_f21.jpg?1",
     altText: "Slide 2",
     caption: ""
   },

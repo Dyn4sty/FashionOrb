@@ -13,12 +13,20 @@ $breakpoint-tablet: 1250px;
         display: flex;
         flex-flow: row;
         justify-content: flex-start;
-    }
-    @media (max-width: $breakpoint-tablet) {
-        .sign-in-buttons {
-            display: flex;
-            flex-flow: column;
-            justify-content: flex-start; 
+        @media screen and (max-width: $breakpoint-tablet) {
+                display: flex;
+                flex-flow: column;
+                justify-content: flex-start; 
+            
+        }
+        .google-btn {
+            width: auto !important;
+            min-width: 240px;
+            margin-left: 1vw !important;
+            @media screen and (max-width: $breakpoint-tablet) {
+                margin-left: 0 !important;
+                margin-top: 3vw;
+            }
         }
     }
 
