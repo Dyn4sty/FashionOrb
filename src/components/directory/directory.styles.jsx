@@ -1,13 +1,14 @@
-$breakpoint-mobile: 756px;
+import styled from 'styled-components';
 
-.directory-menu {
+export const DirectoryMenuContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  @media (max-width: $breakpoint-mobile) {
+  
+  @media (max-width: 756px) {
     display: flex;
     flex-flow: column;
     justify-content: flex-start; 
   }
-}
+`

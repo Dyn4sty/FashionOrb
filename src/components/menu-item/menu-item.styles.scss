@@ -54,10 +54,10 @@
     position: absolute;
 
     .title {
-      font-weight: bold;
+     font-weight: bold;
       margin: 0 6px 0;
       font-size: 22px;
-      color: #4a4a4a;
+      color: #4a4a4a; 
     }
 
     .subtitle {
@@ -65,9 +65,4 @@
       font-size: 16px;
     }
   }
-}
-@media screen and (max-width: 800px) {
-.menu-item {
-    height: 200px;
-}
 }

@@ -7,9 +7,6 @@
   justify-content: center;
   cursor: pointer;
   color: black;
-  g > path {
-    fill: black !important;
-  }
   .shopping-icon {
     width: 24px;
     height: 24px;
@@ -20,15 +17,5 @@
     font-size: 10px;
     font-weight: bold;
     bottom: 12px;
-  }
-}
-
-.fixed {
-  .cart-icon {
-    color: white;
-    g > path {
-      fill: white !important;
-    }
-
   }
 }

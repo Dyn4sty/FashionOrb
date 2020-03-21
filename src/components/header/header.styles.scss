@@ -10,14 +10,21 @@
 
   //Header Media Query
   @media screen and (max-width: 800px) {
-    padding: 0;
     .logo-container {
       width: auto;
       padding: 0px;
       }
       .options {
-          width: 80%;
-          color:black
+        width: auto !important;
+    }
+    }
+  @media screen and (max-width: 320px) {
+    .logo-container {
+      width: auto;
+      padding: 0px;
+      }
+      .options {
+          width: 50% !important;
       }
   }
 
@@ -50,10 +57,6 @@
       cursor: pointer;
       color: black;
     }
-    // Options Media Query
-    // @media screen and (max-width: 800px) {
-    //   width: auto;
-    // }
   }
   
   &.fixed {
@@ -72,6 +75,13 @@
         color: white;
       }
     }
+  .cart-icon {
+    color: white;
+    g > path {
+      fill: white !important;
+    }
+
+  }
 }
 }
 

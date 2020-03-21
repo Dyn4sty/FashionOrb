@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { clearCart } from '../../redux/cart/cart.actions';
 import { withRouter } from 'react-router-dom'
-import StripeCheckout from 'react-stripe-checkout';
+import {StripeButton} from './stripe-button.styles'
 import swal from 'sweetalert';
 const StripeCheckoutButton = ({ price, dispatch, history}) => {
     const priceForStripe = price * 100
@@ -14,7 +14,7 @@ const StripeCheckoutButton = ({ price, dispatch, history}) => {
         setTimeout(() => history.push('/'), 1000)
     }
     return (
-        <StripeCheckout
+        <StripeButton
         label='Pay Now'
         name='Fashion Orb Ltd.'
         billingAddress

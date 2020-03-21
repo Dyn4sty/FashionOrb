@@ -1,15 +1,14 @@
 import React from 'react';
-import './homepage.styles.scss';
 import Directory from '../../components/directory/Directory'
 import MyCarousel from '../../components/Carousel/Carousel'
-// import {Container, Row, Col } from 'react-bootstrap'
+import { HomePageContainer } from './hompage.styles'
+// import './homepage.styles.scss';
 const HomePage = () => {
   return (
-    
-  <div className='container-fluid homepage'>
+  <HomePageContainer>
       <MyCarousel />
       <Directory/>
-  </div>
+  </HomePageContainer>
   )
 };
 

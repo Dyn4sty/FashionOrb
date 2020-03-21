@@ -5,12 +5,10 @@ $breakpoint-tablet: 1024px;
     justify-content: space-between;
     margin: 30px 30px;
     @media (max-width: $breakpoint-tablet) {
-        & {
             display: flex;
             flex-flow: column;
             justify-content: center; 
 
-        }
         .sign-up {
             text-align: center;
             margin: 0;

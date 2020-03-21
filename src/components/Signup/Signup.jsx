@@ -2,9 +2,9 @@ import React from 'react';
 import FormInput from '../form-input/forum-input';
 import CustomButton from '../custom-button/custom-button';
 import swal from 'sweetalert';
-
-import {auth, createUserProfileDocument} from '../../firebase/firebase.utils';
-import './sign-up.styles.scss'
+import { SignUpContainer, TitleContainer, SignInButtonsContainer } from './sign-up.styles'
+import {auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+// import './sign-up.styles.scss'
 
 class SignUp extends React.Component {
     Initial_STATE = {
@@ -30,7 +30,7 @@ class SignUp extends React.Component {
                 email,
                 password
               );
-              await createUserProfileDocument(user, { displayName });
+              await createUserProfileDocument(user, { displayName }) 
         }
         catch (error) {
             var errorCode = error.code;
@@ -52,8 +52,8 @@ class SignUp extends React.Component {
     render() {
         const {displayName, email, password, confirmPassword} = this.state
         return(
-            <div className='sign-up'>
-                <h2 className="title">I do not have an account</h2>
+            <SignUpContainer>
+                <TitleContainer className="title">I do not have an account</TitleContainer>
                 <span>Sign Up with your email and password</span>
                 
                 <form className='sign-up-form' onSubmit={this.handleSubmit}>
@@ -89,12 +89,12 @@ class SignUp extends React.Component {
                     label="Confirm Password"
                     required 
                     />
-                    <div className="sign-in-buttons">
+                    <SignInButtonsContainer>
                     <CustomButton type="submit">Sign Up</CustomButton>
-                    </div>
+                    </SignInButtonsContainer>
                 </form>
 
-            </div>
+            </SignUpContainer>
 
         )
     }

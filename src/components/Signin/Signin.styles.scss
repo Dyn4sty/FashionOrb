@@ -1,11 +1,9 @@
 $breakpoint-tablet: 1250px;
 
 .sign-in {
-    width: auto;
+    width: 380px;
     display: flex;
     flex-direction: column;
-    margin: auto 0 auto;
-    text-align: center;
     .title {
         margin: 10px 0;
     }
@@ -13,7 +11,7 @@ $breakpoint-tablet: 1250px;
         display: flex;
         flex-flow: row;
         justify-content: flex-start;
-        @media screen and (max-width: $breakpoint-tablet) {
+        @media screen and (max-width: 1250px) {
                 display: flex;
                 flex-flow: column;
                 justify-content: flex-start; 

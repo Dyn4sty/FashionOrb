@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.utils' 
-import { ReactComponent as Logo } from '../../assets/Orb.svg';
+// import { ReactComponent as Logo } from '../../assets/Orb.svg';
 import { selectCurrentUser } from '../../redux/user/user.selectors'
 import { selectCartHidden } from '../../redux/cart/cart.selectors'
 import CartIcon from '../cart-icon/cart-icon'
 import CartDropdown from '../cart-dropdown/cart-dropdown'
-import './header.styles.scss';
-
+// import './header.styles.scss';
+import {  HeaderContainer, LogoContainer, LogoImage, OptionLink, OptionsContainer } from './header.styles'
 class Header extends React.Component {
     constructor(props) {
         super(props)
@@ -32,36 +32,35 @@ class Header extends React.Component {
         {
         const { currentUser, hidden } = this.props
         const { scrollY } = this.state
-        console.log()
-        const fixed = scrollY > 80 ? 'fixed' : ''
+        const fixed = scrollY > 80 
         return (
-        <div className={`header navbar ${fixed}`}>
-            <Link className='logo-container' to="/">
-                <Logo className ='logo'></Logo>
-            </Link>
-            <div className='options'>
-                <Link className='option' to='/shop'>
+        <HeaderContainer fixed={fixed}>
+            <LogoContainer to="/">
+                <LogoImage />
+            </LogoContainer>
+            <OptionsContainer fixed={fixed}>
+                <OptionLink fixed={fixed} to='/shop'>
                     SHOP
-                </Link>
-                <Link className='option' to='/shop'>
+                </OptionLink>
+                <OptionLink fixed={fixed} to='/shop'>
                     CONTACT
-                </Link>
+                </OptionLink>
                 {
                 currentUser ?
-                    <div className='option' onClick={ () => auth.signOut() }>
+                    <OptionLink fixed={fixed} onClick={ () => auth.signOut() }>
                         SIGN OUT
-                    </div>
+                    </OptionLink>
                     :
-                    <Link className='option' to='/signin'>
+                    <OptionLink fixed={fixed} to='/signin'>
                         SIGN IN
-                    </Link>
+                    </OptionLink>
                     
                 }
-                <CartIcon />
-            </div>
+                <CartIcon fixed={fixed} />
+            </OptionsContainer>
             <CartDropdown hidden={hidden} />
             
-        </div>
+        </HeaderContainer>
     )}
 }
 const mapStateToProps = createStructuredSelector({
