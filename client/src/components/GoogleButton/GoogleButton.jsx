@@ -3,7 +3,7 @@ import {ReactComponent as GoogleIcon} from '../../assets/Google.svg';
 import { GoogleButtonContainer, GoogleIconWrapper } from './GoogleButton.styles'
 
 const GoogleButton = ({children, ...otherProps}) => (
-<GoogleButtonContainer type="" {...otherProps}>
+<GoogleButtonContainer  {...otherProps}>
     <GoogleIconWrapper>
         <GoogleIcon />
     </GoogleIconWrapper>
