@@ -33,7 +33,11 @@ export function* getSnapshotFromUserAuth(userAuth, additionalData, alert=true) {
     );
     const userSnapshot = yield userRef.get();
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
-    if (alert) yield swal("Success" ,  'You Signed In Successfully!',  "success");
+    
+    if (alert) {
+      const { displayName } = yield userSnapshot.data()
+      yield swal("Success" ,  `${displayName} You Signin Sucessfully! Welcome.`, "success")
+    };
     
   } catch (error) {
     yield put(signInFailure(error));
@@ -70,7 +74,7 @@ export function* signUp({ payload: { email, password, displayName }}) {
 }
 
 export function* signInAfterSignUp({ payload: { user, additionalData } }) {
-  yield getSnapshotFromUserAuth(user, additionalData);
+  yield getSnapshotFromUserAuth(user, additionalData, false);
   yield swal("Success" ,  'You Registerd Successfully!' ,  "success" )
 }
 
