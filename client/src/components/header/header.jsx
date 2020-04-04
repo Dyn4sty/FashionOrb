@@ -6,10 +6,12 @@ import { selectCartHidden } from '../../redux/cart/cart.selectors'
 import { signOutStart } from '../../redux/user/users.actions'
 import CartIcon from '../cart-icon/cart-icon'
 import CartDropdown from '../cart-dropdown/cart-dropdown'
-// import './header.styles.scss';
+
 import {  HeaderContainer, LogoContainer, LogoImage, OptionLink, OptionsContainer } from './header.styles'
+
 const Header = ({ currentUser, hidden, dispatch }) => {
-    const [scrollY, setScroll] = useState(0);
+
+    const [fixed, setFixed] = useState(false);
 
       useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -17,15 +19,19 @@ const Header = ({ currentUser, hidden, dispatch }) => {
         return () => {
             window.removeEventListener('scroll', handleScroll)
           }
-    },[scrollY])
+    },)
 
     const handleScroll = (event) => {
-        setScroll(window.scrollY);
+        // fixed navbar
+        if (window.scrollY > 80 && !fixed){ 
+            setFixed(true)
+        }
+        // reset navbar
+        if (window.scrollY < 80 && fixed){
+            setFixed(false)
+        }
     }
-
-    const fixed = scrollY > 80;
-
-
+    
     return (
     <HeaderContainer fixed={fixed}>
         <LogoContainer to="/">
@@ -61,4 +67,4 @@ const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser,
     hidden: selectCartHidden
 })
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps)(React.memo(Header))
