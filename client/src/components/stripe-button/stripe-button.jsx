@@ -9,9 +9,8 @@ import swal from 'sweetalert';
 const StripeCheckoutButton = ({ price, dispatch, history,}) => {
     const priceForStripe = price * 100
     const publishableKey = 'pk_test_ghjMMq6QNw2yKFSPwbdgL8CV00i3EAIXXG'
-
+    
     const onToken = token => {
-        dispatch(clearCart())
         fetch('http://localhost:5000/payment', {
             method: 'POST',
             mode: 'cors',
@@ -26,12 +25,18 @@ const StripeCheckoutButton = ({ price, dispatch, history,}) => {
         .then(res => res.json())
         .then(data => {
             if (data.success) {
+                dispatch(clearCart())
                 swal("Good Job" ,  'Your Transaction is Now Completed' ,  "success" );
                 setTimeout(() => history.push('/'), 1000)
             }
+            else {
+                if (data.error) {
+                    swal("Something Went Wrong.." ,  'Your Transaction Failed' ,  "error" );
+                }
+            }
         })
         .catch(error => {
-            console.log(error)
+            alert(error)
         })
     }
     if (price < 1) {

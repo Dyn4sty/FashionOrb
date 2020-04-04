@@ -1,11 +1,11 @@
 import React from 'react';
 // import './collection-preview.styles.scss'
 import CollectionItem from '../collection-item/collection-item'
-import { CollectionPreviewContainer, PreviewContainer, TitleContainer} from './collection-preview.styles'
-const CollectionPreview = ({title, items}) => (
-    <CollectionPreviewContainer>
-        <TitleContainer>{title.toUpperCase()}</TitleContainer>
-        <PreviewContainer>
+import { CollectionPreviewContainer, PreviewContainer} from './collection-preview.styles'
+const CollectionPreview = ({items}) => (
+    <CollectionPreviewContainer className="container">
+        {/* <TitleContainer to={`shop/${title.toLowerCase()}`}>{title.toUpperCase()}</TitleContainer> */}
+        <PreviewContainer >
         {
             items.filter((item,  idx) => idx < 4) // only showing 4 items
             .map( (item) => (

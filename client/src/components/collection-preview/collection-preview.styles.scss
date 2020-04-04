@@ -12,12 +12,9 @@
   }
 
   .preview {
-    display: flex;
-    justify-content: space-between;
-    @media screen and (max-width: 800px) {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-  }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-rows: 1fr;
+    grid-column-gap: 12px;
   }
 }

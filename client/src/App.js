@@ -28,19 +28,19 @@ const App = ({ currentUser, checkUserSession }) => {
 return (
   <React.Fragment>
     <Header/>
-    <Switch>  
-    <ErrorBoundary>
-        <Suspense fallback={<Spinner/>}>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/shop' component={ShopPage} />
-          <Route exact path='/checkout' component={CheckoutPage} />
-          <Route exact path ='/signin' render={() => currentUser ? (
-          <Redirect to='/' />
-          ) : (<SignInAndRegister />)}
-          />
-        </Suspense>
-      </ErrorBoundary>
-    </Switch>
+      <Switch>
+      <ErrorBoundary>
+          <Suspense fallback={<Spinner/>}>
+            <Route exact path='/' component={HomePage} />
+            <Route path='/shop' component={ShopPage} />
+            <Route exact path='/checkout' component={CheckoutPage} />
+            <Route exact path ='/signin' render={() => currentUser ? (
+            <Redirect to='/' />
+            ) : (<SignInAndRegister />)}
+            />
+          </Suspense>
+        </ErrorBoundary>
+      </Switch>
   </React.Fragment>
 
   );

@@ -32,7 +32,7 @@ export const HeaderContainer = styled.div`
   margin-bottom: 25px;
   background: white;
   position: sticky;
-  padding: .5rem 1rem;
+  padding: 0 1rem;
   transition: all .8s ease 0s;
   flex-wrap: wrap;
   z-index: 3; 
@@ -65,7 +65,7 @@ export const OptionsContainer= styled.div`
     ${({fixed}) => fixed ? CartIconFixed : ''}
 `
 export const OptionLink = styled(Link)`
-    padding: 10px 15px;
+    padding: 10px 8px;
     cursor: pointer;
     color: ${({fixed}) => fixed ? 'white' : 'black'};
 `

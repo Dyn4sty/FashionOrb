@@ -33,19 +33,19 @@ const Header = ({ currentUser, hidden, dispatch }) => {
         </LogoContainer>
         <OptionsContainer fixed={fixed}>
             <OptionLink fixed={fixed} to='/shop'>
-                SHOP
+                Shop
             </OptionLink>
             <OptionLink fixed={fixed} to='/shop'>
-                CONTACT
+                Contact
             </OptionLink>
             {
             currentUser ?
                 <OptionLink fixed={fixed} onClick={ () => dispatch(signOutStart()) }>
-                    SIGN OUT
+                    Sign Out
                 </OptionLink>
                 :
                 <OptionLink fixed={fixed} to='/signin'>
-                    SIGN IN
+                    Sign In
                 </OptionLink>
                 
             }

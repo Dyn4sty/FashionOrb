@@ -1,0 +1,36 @@
+import styled,{ css } from 'styled-components'
+
+export const BannerWrapper = styled.div`
+    background: url(${props => props.background});
+    height: ${props => props.bannerheight ? props.bannerheight : '400px'};
+    border-radius: 7px;
+    background-position: center;
+    background-size: cover;
+    display:flex;
+    margin: 0 2rem 1.5vw ;
+    @media (max-width: 576px) {
+        margin: 0;
+    }
+    ${props => props.bannertype === "center" ? 
+    css`
+        align-items: center;
+        text-align:center;
+        justify-content:center;
+    ` : props.bannertype === "left" ? 
+    css`
+        align-items: center;
+        justify-content:flex-start;
+    `: css`
+    align-items:center
+    `
+    };
+    
+    h1{
+        font-weight: 700;
+        font-size: 43px;
+        margin: 1rem 0;
+    }
+    p{ 
+        margin: 0;
+    }
+`
