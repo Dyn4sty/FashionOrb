@@ -8,14 +8,14 @@ export const BannerWrapper = styled.div`
     background-size: cover;
     display:flex;
     margin: 0 2rem 1.5vw ;
-    &:nth-last-child(2) {
-        margin: 2rem
-    }
     &:last-child {
         margin: 2rem;
     }
+    &:nth-last-child(2) {
+        margin: 2rem
+    }
     @media (max-width: 768px) {
-        margin: 2rem 0;
+        margin: 2rem 0 !important;
     }
     ${props => props.bannertype === "center" ? 
     css`

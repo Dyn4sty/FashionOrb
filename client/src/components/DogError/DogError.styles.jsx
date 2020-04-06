@@ -26,7 +26,7 @@ export const ErrorImageHead = styled.h1`
 `;
 
 export const ErrorImageText = styled.h2`
-  font-size: 28px;
+  font-size: ${({size}) => size};
   color: rgb(92, 119, 172);
   text-align: center;
 `;

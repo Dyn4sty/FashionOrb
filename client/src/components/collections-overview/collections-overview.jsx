@@ -6,10 +6,9 @@ import { createStructuredSelector } from 'reselect'
 import { selectCollectionsForPreview } from '../../redux/shop/shop.selectors'
 import CollectionPreview from '../collection-preview/collection-preview'
 import { CollectionsOverViewContainer } from './collections-overview.styles'
-import BannerItem from '../banner-item/banner-item.component';
+import BannerItem from '../banner-item/banner-item';
 import TabDiv from '../tab-div/tab-div.components';
 
-// import './collections-overview.styles.scss'
 
 const CollectionsOverview = ({collections}) => {
     return (

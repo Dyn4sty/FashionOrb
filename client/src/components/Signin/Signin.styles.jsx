@@ -8,7 +8,7 @@ export const SignInContainer = styled.div`
     margin: auto 0 auto;
     text-align: center;
 `
-export const TitleContainer = styled.h2`
+export const TitleContainer = styled.h1`
     margin: 10px 0;
 ` 
 

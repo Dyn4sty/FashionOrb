@@ -1,5 +1,6 @@
 import React from 'react';
-import { ErrorImageContainer, ErrorImageOverlay, ErrorImageText, ErrorImageHead } from './error-boundary.styles'
+import DogError from '../DogError/DogError'
+
 class ErrorBoundary extends React.Component {
     constructor(props) {
       super(props);
@@ -19,13 +20,7 @@ class ErrorBoundary extends React.Component {
     render() {
       if (this.state.hasError) {
         return (
-            <ErrorImageOverlay>
-                <ErrorImageContainer imageUrl="https://i.imgur.com/lKJiT77.png"/>
-                <ErrorImageHead>A Dog Ate this Page</ErrorImageHead>
-                <ErrorImageText>
-                Your dog is cute but honestly a menace...
-                </ErrorImageText>
-            </ErrorImageOverlay>
+          <DogError />
         )
       }
   
