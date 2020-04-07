@@ -1,26 +1,32 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearItemFromCart, RemoveItem, addItem} from '../../redux/cart/cart.actions';
+import { CheckoutItemContainer, ImageContainer, ContentContainer, RemoveButton, ValueContainer } from './checkout-item.styles'
+// import './checkout-item.styles.scss'
 
-import './checkout-item.styles.scss'
-
-const CheckoutItem = ({cartItem, clearItemFromCart, RemoveItem, addItem}) => {
-    const {imageUrl, price, name, quantity} = cartItem
+const CheckoutItem = ({cartItem: item, clearItemFromCart, RemoveItem, addItem}) => {
+    const {imageUrl, price, name, quantity, collectionId} = item
+    console.log(item)
     return (
-    <div className='checkout-item'>
-        <div className='image-container'>
+    <CheckoutItemContainer>
+        <ImageContainer as={Link} to={{
+            pathname: `/shop/${collectionId}/${name}`,
+            state: {item}
+            }
+        }>
             <img src={imageUrl} alt='item'/>
-        </div>
-        <span className='name'>{name}</span>
-        <span className='quantity'>
-            <div className='arrow' onClick={() => RemoveItem(cartItem)}>&#10094;</div>
-            <span className='value'>{quantity}</span>
-            <div className='arrow' onClick={() => addItem(cartItem)}>&#10095;</div>
+        </ImageContainer>
+        <ContentContainer>{name}</ContentContainer>
+        <ContentContainer>
+            <div onClick={() => RemoveItem(item)}>&#10094;</div>
+            <ValueContainer c>{quantity}</ValueContainer>
+            <div onClick={() => addItem(item)}>&#10095;</div>
 
-        </span>
-        <span className='price'>${price}</span>
-        <span onClick={() => clearItemFromCart(cartItem)} className='remove-button'>&#10005;</span>
-    </div>
+        </ContentContainer>
+        <ContentContainer>${price}</ContentContainer>
+        <RemoveButton onClick={() => clearItemFromCart(item)}>&#10005;</RemoveButton>
+    </CheckoutItemContainer>
 )}
 const mapDispatchToProps = dispatch => ({
     clearItemFromCart: item => dispatch(clearItemFromCart(item)),

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CollectionItem from '../../components/collection-item/collection-item'
 import { Link, useParams} from 'react-router-dom'
-
+import {createStructuredSelector} from 'reselect'
 import { selectCollection } from '../../redux/shop/shop.selectors'
 import { CollectionPageContainer, ItemsContainer } from './collection.styles'
 import BannerItem from '../../components/banner-item/banner-item'
@@ -20,15 +20,15 @@ const CollectionPage = ({ collection }) => {
             <TabDiv></TabDiv>
             <ItemsContainer>
                     {collection.items.map(item => (
-                        <CollectionItem key={item.id} item={item} />
+                        <CollectionItem key={item.id} item={item} collectionId={collectionId}/>
                     ))}
             </ItemsContainer>
         </CollectionPageContainer>
     </>
 )}
 
-const mapStateToProps = (state, ownProps) => ({
-    collection: selectCollection(ownProps.match.params.collectionId)(state)  
+const mapStateToProps = (state, ownProps) => createStructuredSelector({
+    collection: selectCollection(ownProps.match.params.collectionId)
 }) 
 
 export default connect(mapStateToProps)(CollectionPage)

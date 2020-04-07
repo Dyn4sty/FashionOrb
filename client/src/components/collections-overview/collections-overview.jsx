@@ -10,7 +10,7 @@ import BannerItem from '../banner-item/banner-item';
 import TabDiv from '../tab-div/tab-div.components';
 
 
-const CollectionsOverview = ({collections}) => {
+const CollectionsOverview = ({collections}) =>  {
     return (
     <>
         <BannerItem bannertype={'center'} background={'https://i.ibb.co/G0XJb1R/S2.jpg'} bannerheight="500px">
@@ -19,8 +19,8 @@ const CollectionsOverview = ({collections}) => {
         </BannerItem>
         <CollectionsOverViewContainer>
         <TabDiv></TabDiv>
-        {collections.map(({id, ...OtherCollectionProps}) => (
-                <CollectionPreview key={id} {...OtherCollectionProps}/>
+        {collections.map(({id, routeName, ...OtherCollectionProps}) => (
+                <CollectionPreview key={id} id={routeName} {...OtherCollectionProps}/>
             ))
         }
         </CollectionsOverViewContainer>

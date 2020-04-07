@@ -41,7 +41,7 @@ const Header = ({ currentUser, hidden, dispatch }) => {
             <OptionLink fixed={fixed} to='/shop'>
                 Shop
             </OptionLink>
-            <OptionLink fixed={fixed} to='/shop'>
+            <OptionLink fixed={fixed} to='/contact'>
                 Contact
             </OptionLink>
             {
