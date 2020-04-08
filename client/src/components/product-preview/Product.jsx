@@ -8,8 +8,9 @@ import CustomButton from '../custom-button/custom-button'
 
 import { NewArrivalBadge, PriceContent, StyledCol } from './Product.styles'
 
-const Product = ({addItem, openAndCloseCart, match, location: {state: { item }} },) => {
-    const { name, price, imageUrl, sizes} = item
+const Product = ({addItem, openAndCloseCart, match, location: { state: { item }} },) => {
+
+    const { name, price, imageUrl, sizes } = item
     const { collectionId } = match.params
     
     return (
@@ -61,4 +62,5 @@ const mapDispatchToProps = dispatch => ({
   addItem: item => dispatch(addItem(item)),
   openAndCloseCart: hidden => dispatch(openAndCloseCart(hidden))
 })
+
 export default connect(null, mapDispatchToProps)(Product) 
