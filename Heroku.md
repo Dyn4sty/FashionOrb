@@ -33,4 +33,4 @@ $ heroku buildpacks:remove <buildpack_name>
 $ heroku config:set <env_property_name>=<value>
 ```
 
-Application URL [https://fashionorb.herokuapp.com/](https://jwl-clothing.herokuapp.com/)
+Application URL [https://fashionorb.herokuapp.com/](https://fashionorb.herokuapp.com/)
