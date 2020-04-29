@@ -14,7 +14,7 @@ const CollectionPageContainer = lazy(() =>
   import("../collection/collection.container")
 );
 
-const ShopPage = ({ fetchCollectionsStart, match, location }) => {
+export const ShopPage = ({ fetchCollectionsStart, match, location }) => {
   useState(() => fetchCollectionsStart(), [fetchCollectionsStart]);
 
   useEffect(() => {
@@ -61,4 +61,5 @@ const ShopPage = ({ fetchCollectionsStart, match, location }) => {
 const mapDispatchToProps = (dispatch) => ({
   fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
 });
+
 export default connect(null, mapDispatchToProps)(React.memo(ShopPage));

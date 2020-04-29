@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CheckoutPage component 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.div>
+      <span>
+        Product
+      </span>
+    </styled.div>
+    <styled.div>
+      <span>
+        Description
+      </span>
+    </styled.div>
+    <styled.div>
+      <span>
+        Quantity
+      </span>
+    </styled.div>
+    <styled.div>
+      <span>
+        Price
+      </span>
+    </styled.div>
+    <styled.div>
+      <span>
+        Remove
+      </span>
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <span>
+       Your Total: $
+       
+    </span>
+  </styled.div>
+  <styled.div>
+    *Please use the following test credit card for payments*
+    <br />
+    4242 4242 4242 4242 - Exp: 01/21 - CVV: 123
+  </styled.div>
+  <withRouter(Connect(StripeCheckoutButton)) />
+</styled.div>
+`;

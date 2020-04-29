@@ -26,41 +26,41 @@ const Product = ({
         <Row>
           <Col md={6}>
             {" "}
-            <Image fluid width="500" src={imageUrl} />
-            <StyledCol md={6}>
-              <NewArrivalBadge>NEW</NewArrivalBadge>
-              <h2 style={{ color: "#555" }}>{name}</h2>
-              <p>
-                Product Code: <strong>ISRC2020</strong>
-              </p>
-              <PriceContent>USD: ${price}</PriceContent>
-              <Form.Group controlId="exampleForm.SelectCustom">
-                <Form.Label>SIZE:</Form.Label>
-                <Form.Control as="select" custom>
-                  {sizes ? (
-                    sizes.sort().map((size) => <option>{size}</option>)
-                  ) : (
-                    <>
-                      <option>XS</option>
-                      <option>S</option>
-                      <option>M</option>
-                      <option>L</option>
-                      <option>XL</option>
-                    </>
-                  )}
-                </Form.Control>
-              </Form.Group>
-              <CustomButton
-                onClick={() => {
-                  openAndCloseCart(false);
-                  setTimeout(() => openAndCloseCart(true), 4000);
-                  addItem({ ...item, collectionId });
-                }}
-              >
-                Add To Bag
-              </CustomButton>
-            </StyledCol>
+            <Image fluid width="500" src={imageUrl} />{" "}
           </Col>
+          <StyledCol md={6}>
+            <NewArrivalBadge>NEW</NewArrivalBadge>
+            <h2 style={{ color: "#555" }}>{name}</h2>
+            <p>
+              Product Code: <strong>ISRC2020</strong>
+            </p>
+            <PriceContent>USD: ${price}</PriceContent>
+            <Form.Group controlId="exampleForm.SelectCustom">
+              <Form.Label>SIZE:</Form.Label>
+              <Form.Control as="select" custom>
+                {sizes ? (
+                  sizes.sort().map((size) => <option>{size}</option>)
+                ) : (
+                  <>
+                    <option>XS</option>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                    <option>XL</option>
+                  </>
+                )}
+              </Form.Control>
+            </Form.Group>
+            <CustomButton
+              onClick={() => {
+                openAndCloseCart(false);
+                setTimeout(() => openAndCloseCart(true), 4000);
+                addItem({ ...item, collectionId });
+              }}
+            >
+              Add To Bag
+            </CustomButton>
+          </StyledCol>
         </Row>
       </Container>
     </>

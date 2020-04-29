@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShopPage should render ShopPage component 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Provider
+      store={
+        Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "persistor": Object {
+            "persist": [Function],
+          },
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        }
+      }
+    >
+      <ShopPage
+        fetchCollectionsStart={
+          [MockFunction] {
+            "calls": Array [
+              Array [],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        location={
+          Object {
+            "pathname": "/shop",
+          }
+        }
+        match={
+          Object {
+            "path": "",
+          }
+        }
+      >
+        <Suspense
+          fallback={<Spinner />}
+        >
+          <TransitionGroup
+            childFactory={[Function]}
+            component="div"
+          >
+            <div>
+              <CSSTransition
+                classNames="pageSlider"
+                in={true}
+                key=".$/"
+                onExited={[Function]}
+                timeout={
+                  Object {
+                    "enter": 800,
+                    "exit": 0,
+                  }
+                }
+              >
+                <Transition
+                  appear={false}
+                  enter={true}
+                  exit={true}
+                  in={true}
+                  mountOnEnter={false}
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  timeout={
+                    Object {
+                      "enter": 800,
+                      "exit": 0,
+                    }
+                  }
+                  unmountOnExit={false}
+                >
+                  <div
+                    className="fades"
+                  >
+                    <Switch>
+                      <Connect(PublicRoute)
+                        component={
+                          Object {
+                            "$$typeof": Symbol(react.lazy),
+                            "_ctor": [Function],
+                            "_result": Object {
+                              "$$typeof": Symbol(react.memo),
+                              "WrappedComponent": [Function],
+                              "compare": null,
+                              "displayName": "Connect(Component)",
+                              "type": [Function],
+                            },
+                            "_status": 1,
+                          }
+                        }
+                        computedMatch={
+                          Object {
+                            "isExact": true,
+                            "params": Object {},
+                            "path": "/",
+                            "url": "/",
+                          }
+                        }
+                        exact={true}
+                        location={
+                          Object {
+                            "hash": "",
+                            "pathname": "/",
+                            "search": "",
+                            "state": undefined,
+                          }
+                        }
+                        path=""
+                        restricted={false}
+                      >
+                        <PublicRoute
+                          component={
+                            Object {
+                              "$$typeof": Symbol(react.lazy),
+                              "_ctor": [Function],
+                              "_result": Object {
+                                "$$typeof": Symbol(react.memo),
+                                "WrappedComponent": [Function],
+                                "compare": null,
+                                "displayName": "Connect(Component)",
+                                "type": [Function],
+                              },
+                              "_status": 1,
+                            }
+                          }
+                          computedMatch={
+                            Object {
+                              "isExact": true,
+                              "params": Object {},
+                              "path": "/",
+                              "url": "/",
+                            }
+                          }
+                          dispatch={[Function]}
+                          exact={true}
+                          location={
+                            Object {
+                              "hash": "",
+                              "pathname": "/",
+                              "search": "",
+                              "state": undefined,
+                            }
+                          }
+                          path=""
+                          restricted={false}
+                        >
+                          <Route
+                            computedMatch={
+                              Object {
+                                "isExact": true,
+                                "params": Object {},
+                                "path": "/",
+                                "url": "/",
+                              }
+                            }
+                            dispatch={[Function]}
+                            exact={true}
+                            location={
+                              Object {
+                                "hash": "",
+                                "pathname": "/",
+                                "search": "",
+                                "state": undefined,
+                              }
+                            }
+                            path=""
+                            render={[Function]}
+                          />
+                        </PublicRoute>
+                      </Connect(PublicRoute)>
+                    </Switch>
+                  </div>
+                </Transition>
+              </CSSTransition>
+            </div>
+          </TransitionGroup>
+          <Spinner>
+            <styled.div>
+              <div
+                className="sc-AxjAm HvuBM"
+              >
+                <styled.div>
+                  <div
+                    className="sc-AxirZ haZpvb"
+                  />
+                </styled.div>
+              </div>
+            </styled.div>
+          </Spinner>
+        </Suspense>
+      </ShopPage>
+    </Provider>
+  </Router>
+</BrowserRouter>
+`;

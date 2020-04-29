@@ -27,6 +27,7 @@ margin-right: 7.5px;
 margin-left: 7.5px;
 }
 `;
+MenuItemContainer.displayName = 'MenuItemContainer';
 
 export const BackgroundImageContainer = styled.div`
     height: 100%;
@@ -37,6 +38,7 @@ export const BackgroundImageContainer = styled.div`
     background-position: center;
 background-image: url(${({ imageUrl }) => imageUrl});
 `;
+BackgroundImageContainer.displayName = "BackgroundImageContainer"
 
 export const ContentContainer = styled.div`
     height: 90px;

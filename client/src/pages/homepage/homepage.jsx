@@ -4,6 +4,7 @@ import Directory from "../../components/directory/Directory";
 import BannerItem from "../../components/banner-item/banner-item";
 import { HomePageContainer, ArivalWrapper } from "./hompage.styles";
 import CustomButton from "../../components/custom-button/custom-button";
+
 const HomePage = () => {
   return (
     <HomePageContainer>

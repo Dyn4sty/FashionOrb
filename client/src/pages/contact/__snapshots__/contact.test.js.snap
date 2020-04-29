@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ContactPage component 1`] = `
+<styled.div>
+  <h5>
+    GOT A QUESTION?
+  </h5>
+  <h1
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    Contact FashionOrb
+  </h1>
+  <p>
+    We’re here to help and answer any question you might have. We look forward to hearing from you
+     
+    <span
+      aria-label="emoji"
+      role="img"
+    >
+      🙂
+    </span>
+  </p>
+  <styled.div>
+    <div
+      className="card"
+    >
+      <p>
+        Email:
+         
+        <b>
+          <a
+            href="mailto:example@gmail.com"
+          >
+            example@gmail.com
+          </a>
+        </b>
+      </p>
+      <p>
+        Twitter:
+         
+        <b>
+          <a
+            href="#home"
+          >
+            Twitter Profile
+          </a>
+        </b>
+      </p>
+      <p>
+        LinkedIn:
+         
+        <b>
+          <a
+            href="#home"
+          >
+            Linked Profile
+          </a>
+        </b>
+      </p>
+    </div>
+  </styled.div>
+  <iframe
+    allowfullscreen=""
+    aria-hidden="false"
+    frameborder="0"
+    height="600"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.449330021458!2d90.3993155844375!3d23.873680384528818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c59f42d61cf7%3A0xc440f706d8c5513e!2sFashion%20ORB!5e0!3m2!1siw!2sil!4v1586175686396!5m2!1siw!2sil"
+    style={
+      Object {
+        "border": 0,
+        "width": "100%",
+      }
+    }
+    tabindex="0"
+    title="GoogleMap"
+    width="450"
+  />
+</styled.div>
+`;
