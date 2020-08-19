@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { Col } from "react-bootstrap";
-
+export const MyContainer = styled.div`
+  height: 100vh;
+  @media screen and (max-width: 768px) {
+    height: auto;
+  }
+`;
 export const NewArrivalBadge = styled.p`
   background: green;
   width: 50px;
