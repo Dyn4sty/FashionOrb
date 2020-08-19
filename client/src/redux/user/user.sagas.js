@@ -1,12 +1,9 @@
-import { takeLatest, put, all, call } from 'redux-saga/effects';
-import swal from 'sweetalert';
+import { takeLatest, put, all, call } from "redux-saga/effects";
+import swal from "sweetalert";
 
-import UserActionTypes from './user.types';
+import UserActionTypes from "./user.types";
 
-import {
-  clearCart
-}
-from '../cart/cart.actions'
+import { clearCart } from "../cart/cart.actions";
 
 import {
   signInSuccess,
@@ -14,17 +11,21 @@ import {
   signOutSuccess,
   signOutFailure,
   signUpSuccess,
-  signUpFailure
-} from './users.actions';
+  signUpFailure,
+} from "./users.actions";
 
 import {
   auth,
   googleProvider,
   createUserProfileDocument,
-  getCurrentUser
-} from '../../firebase/firebase.utils';
+  getCurrentUser,
+} from "../../firebase/firebase.utils";
 
-export function* getSnapshotFromUserAuth(userAuth, additionalData, alert=true) {
+export function* getSnapshotFromUserAuth(
+  userAuth,
+  additionalData,
+  alert = true
+) {
   try {
     const userRef = yield call(
       createUserProfileDocument,
@@ -33,12 +34,15 @@ export function* getSnapshotFromUserAuth(userAuth, additionalData, alert=true) {
     );
     const userSnapshot = yield userRef.get();
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
-    
+
     if (alert) {
-      const { displayName } = yield userSnapshot.data()
-      yield swal("Success" ,  `${displayName} You Signin Sucessfully! Welcome.`, "success")
-    };
-    
+      const { displayName } = yield userSnapshot.data();
+      yield swal(
+        "Success",
+        `${displayName} You Signin Sucessfully! Welcome.`,
+        "success"
+      );
+    }
   } catch (error) {
     yield put(signInFailure(error));
   }
@@ -62,26 +66,27 @@ export function* signInWithEmail({ payload: { email, password } }) {
   }
 }
 
-
-export function* signUp({ payload: { email, password, displayName }}) {
+export function* signUp({ payload: { email, password, displayName } }) {
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
     yield put(signUpSuccess({ user, additionalData: { displayName } }));
-  }
-  catch (error) {
+  } catch (error) {
     yield put(signUpFailure(error));
   }
 }
 
 export function* signInAfterSignUp({ payload: { user, additionalData } }) {
   yield getSnapshotFromUserAuth(user, additionalData, false);
-  yield swal("Success" ,  'You Registerd Successfully!' ,  "success" )
+  yield swal("Success", "You Registerd Successfully!", "success");
 }
 
 export function* isUserAuthenticated() {
   try {
     const userAuth = yield call(getCurrentUser);
-    if (!userAuth) return;
+    if (!userAuth)
+      return yield put(
+        signInFailure({ code: "auth/cant-presist", message: "User Not Found" }, false)
+      );
     yield getSnapshotFromUserAuth(userAuth, null, false);
   } catch (error) {
     yield put(signInFailure(error));
@@ -91,27 +96,22 @@ export function* isUserAuthenticated() {
 export function* signOut() {
   try {
     yield auth.signOut();
-    yield all([
-      put(signOutSuccess()),
-      put(clearCart())
-    ]);
+    yield all([put(signOutSuccess()), put(clearCart())]);
   } catch (error) {
     yield put(signOutFailure(error));
   }
 }
 
-
 export function* SignFailureAlert({ payload: error }) {
   const errorCode = yield error.code;
   const errorMessage = yield error.message;
-  if (errorCode === 'auth/weak-password') {
-      yield swal("Oops" ,  'Password is too weak.' ,  "error" )
-  }
-  else if (errorCode === 'auth/wrong-password') {
-    swal("Oops" ,  'Wrong password.' ,  "error" )
-  }
-  else {
-      yield swal("Oops" ,  errorMessage ,  "error" )
+  if (errorCode === "auth/cant-presist") return;
+  if (errorCode === "auth/weak-password") {
+    yield swal("Oops", "Password is too weak.", "error");
+  } else if (errorCode === "auth/wrong-password") {
+    swal("Oops", "Wrong password.", "error");
+  } else {
+    yield swal("Oops", errorMessage, "error");
   }
 }
 
@@ -120,7 +120,7 @@ export function* onGoogleSignInStart() {
 }
 
 export function* onSignUpStart() {
-  yield takeLatest(UserActionTypes.SIGN_UP_START, signUp)
+  yield takeLatest(UserActionTypes.SIGN_UP_START, signUp);
 }
 
 export function* onEmailSignInStart() {
@@ -140,7 +140,14 @@ export function* onSignUpSuccess() {
 }
 
 export function* onSignFailure() {
-  yield takeLatest([UserActionTypes.SIGN_UP_FAILURE, UserActionTypes.SIGN_IN_FAILURE, UserActionTypes.SIGN_OUT_FAILURE], SignFailureAlert)
+  yield takeLatest(
+    [
+      UserActionTypes.SIGN_UP_FAILURE,
+      UserActionTypes.SIGN_IN_FAILURE,
+      UserActionTypes.SIGN_OUT_FAILURE,
+    ],
+    SignFailureAlert
+  );
 }
 
 export function* userSagas() {

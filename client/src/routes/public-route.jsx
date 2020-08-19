@@ -1,7 +1,8 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import Spinner from "../components/Spinner/Spinner";
+  import { createStructuredSelector } from "reselect";
 import {
   selectCurrentUser,
   selectIsFetching,
@@ -19,13 +20,17 @@ const PublicRoute = ({
     // restricted = true meaning restricted route
     <Route
       {...rest}
-      render={(props) =>
-        currentUser && restricted && !isFetching ? (
-          <Redirect to="/" />
-        ) : (
-          <Component {...props} />
-        )
-      }
+      render={(props) => {
+        if (!restricted) {
+          return <Component {...props} />;
+        }
+        if (isFetching) {
+          return <Spinner />;
+        } else if (currentUser && restricted) {
+          return <Redirect to="/" />;
+        }
+        return <Component {...props} />;
+      }}
     />
   );
 };

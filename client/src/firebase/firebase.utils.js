@@ -1,6 +1,8 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/messaging";
+
 const config = {
   apiKey: "AIzaSyD0mU-gIlw-9NVsQBH-wLDgFUu0Wwj-ZOA",
   authDomain: "fashionorb-f7827.firebaseapp.com",
@@ -19,6 +21,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   const userRef = firestore.doc(`users/${userAuth.uid}`);
 
   const snapShot = await userRef.get();
+
   // Creating user in db
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
@@ -33,6 +36,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     } catch (error) {
       console.log("error creating user", error.message);
     }
+  } else {
+    const lastSignInTime = new Date();
+    await userRef.update({
+      lastSignInTime,
+    });
   }
   return userRef;
 };
@@ -78,7 +86,23 @@ export const getCurrentUser = () => {
     }, reject);
   });
 };
+export const subscribeToNotifications = () => {
+  const messaging = firebase.messaging();
+  messaging.usePublicVapidKey(
+    "BE-AmK0DgiR7FoX88JQJMqlGVhunDhzpo4PjlX27hyJQ5fbgkJkhX9qM4gM1_yHNZH7JNVmIamZkRbntXT55n7k"
+  );
 
+  messaging
+    .requestPermission()
+    .then(() => messaging.getToken())
+    .then((token) => console.log(token))
+    .catch((err) => console.log(err));
+
+  messaging.onMessage((payload) => {
+    console.log("Message received. ", payload);
+    // ...
+  });
+};
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 

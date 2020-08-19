@@ -3,7 +3,7 @@ import { Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
 import Spinner from "../../components/Spinner/Spinner";
-import Product from "../../components/product-preview/Product";
+import ProductContainer from "../../components/product-preview/product.container";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import PublicRoute from "../../routes/public-route";
 
@@ -48,7 +48,7 @@ export const ShopPage = ({ fetchCollectionsStart, match, location }) => {
               <PublicRoute
                 restricted={false}
                 path={`${match.path}/:collectionId/:itemId`}
-                component={Product}
+                component={ProductContainer}
               />
             </Switch>
           </div>

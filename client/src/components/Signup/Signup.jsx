@@ -5,6 +5,8 @@ import FormInput from '../form-input/forum-input';
 import CustomButton from '../custom-button/custom-button';
 import swal from 'sweetalert';
 import { SignUpContainer, TitleContainer, SignInButtonsContainer } from './sign-up.styles'
+import { captchaValidator } from "../../pages/LoginAndRegister/captchaValidator";
+
 
 // import './sign-up.styles.scss'
 
@@ -24,7 +26,18 @@ const SignUp = ({ signUpStart }) => {
             swal("Oops" ,  'Invalid Fields' ,  "error" )
             return;
         }
-        signUpStart({ email, password, displayName })
+        captchaValidator((err, data) => {
+            if (err) {
+              swal("Something Went Wrong..", err, "error");
+              return;
+            }
+            const { success, score } = data;
+            if (score < 0.5 && !success) {
+              swal("Are u a Robot?", "Your Behaivor is simillar to a robot.", "info");
+              return;
+            }
+            signUpStart({ email, password, displayName })
+        })
     }
 
     const handleChange = ({ target: { name, value } }) => {
@@ -42,7 +55,7 @@ const SignUp = ({ signUpStart }) => {
                 type="text" 
                 value={displayName} 
                 handleChange={handleChange}
-                label="name"
+                label="Name"
                 required 
                 />
                 <FormInput
@@ -50,7 +63,7 @@ const SignUp = ({ signUpStart }) => {
                 type="email" 
                 value={email} 
                 handleChange={handleChange}
-                label="email"
+                label="Email"
                 required 
                 />
                 <FormInput 
@@ -58,7 +71,8 @@ const SignUp = ({ signUpStart }) => {
                 type="password" 
                 value={password} 
                 handleChange={handleChange}
-                label="password"
+                label="Password"
+                autocomplete="on"
                 required 
                 />
                 <FormInput 
