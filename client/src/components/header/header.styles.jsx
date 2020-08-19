@@ -36,9 +36,9 @@ export const HeaderContainer = styled.div`
   transition: all .8s ease 0s;
   flex-wrap: wrap;
   z-index: 3; 
-  ${({fixed}) => fixed ? HeaderContainerFixed : ''}
+  ${({fixed}) => fixed === "fixed" ? HeaderContainerFixed : ''}
 `
-export const LogoContainer = styled(Link)`
+export const LogoContainer = styled.svg`
     height: auto;
     width: auto;
     @media screen and (max-width: 800px) {
