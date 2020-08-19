@@ -11,7 +11,7 @@ import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import PublicRoute from "./routes/public-route";
 import PrivateRoute from "./routes/private-route";
 import { subscribeToNotifications } from "./firebase/firebase.utils";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 
 // Lazy Load Pages.
 const HomePage = lazy(() => import("./pages/homepage/homepage"));
@@ -20,7 +20,7 @@ const CheckoutContainer = lazy(() =>
   import("./pages/checkout/checkout.container")
 );
 const ContactPage = lazy(() => import("./pages/contact/contact"));
-const AccountPage = lazy(() => import("./pages/account/account"));
+// const AccountPage = lazy(() => import("./pages/account/account"));
 
 const LoginAndRegister = lazy(() =>
   import("./pages/LoginAndRegister/LoginAndRegister")
@@ -33,7 +33,7 @@ const App = ({ checkUserSession }) => {
    * Testing
    * AccountPage
    */
-  const { i18n } = useTranslation();
+  // const { i18n } = useTranslation();
 
   const unsubscribeFromAuth = null;
   useEffect(() => {
@@ -42,7 +42,7 @@ const App = ({ checkUserSession }) => {
     return () => {
       unsubscribeFromAuth();
     };
-  }, [checkUserSession, i18n]);
+  }, [checkUserSession]);
   const location = useLocation();
 
   return (
@@ -60,7 +60,6 @@ const App = ({ checkUserSession }) => {
               path="/checkout"
               component={CheckoutContainer}
             />
-            <PrivateRoute exact path="/my-account" component={AccountPage} />
             <PublicRoute component={PageNotFound} />
           </Switch>
         </Suspense>
