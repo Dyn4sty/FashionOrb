@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
-const request = require("request");
+const fetch = require("node-fetch");
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
@@ -39,22 +39,25 @@ app.post("/captcha", (req, res) => {
   const token = req.body.token;
 
   const verificationURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}&remoteip=${req.connection.remoteAddress}`;
-  request(verificationURL, (err, response, body) => {
-    body = JSON.parse(body);
-    const errorCode = body["error-codes"] ? body["error-codes"][0] : null;
-    const { success, score } = body;
-    if (!success) {
-      if (errorCode === "invalid-input-response") {
-        return res
-          .status(500)
-          .send({ error: "The Captcha token is invalid or malformed." });
+  fetch(verificationURL)
+    .then((res) => res.json())
+    .then((body) => {
+      console.log(body)
+      const errorCode = body["error-codes"] ? body["error-codes"][0] : null;
+      const { success, score } = body;
+      if (!success) {
+        if (errorCode === "invalid-input-response") {
+          return res
+            .status(500)
+            .send({ error: "The Captcha token is invalid or malformed." });
+        }
+        return res.status(500).send({
+          error: "Failed to verify the Captcha, Please Try again later..",
+        });
       }
-      return res.status(500).send({
-        error: "Failed to verify the Captcha, Please Try again later..",
-      });
-    }
-    res.status(200).send({ success, score });
-  });
+      res.status(200).send({ success, score });
+    })
+    .catch((err) => console.log(err));
 });
 
 app.post("/payment", (req, res) => {
