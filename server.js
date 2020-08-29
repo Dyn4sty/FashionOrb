@@ -1,25 +1,26 @@
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const path = require("path");
 const fetch = require("node-fetch");
+const helmet = require("helmet");
+const compression = require("compression");
+
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(helmet());
 app.use(cors());
+app.use(compression());
 
 if (process.env.NODE_ENV === "production") {
   const enforce = require("express-sslify");
-  const compression = require("compression");
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(express.static(path.join(__dirname, "client/build")));
-  app.use(compression());
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
@@ -42,7 +43,6 @@ app.post("/captcha", (req, res) => {
   fetch(verificationURL)
     .then((res) => res.json())
     .then((body) => {
-      console.log(body)
       const errorCode = body["error-codes"] ? body["error-codes"][0] : null;
       const { success, score } = body;
       if (!success) {
