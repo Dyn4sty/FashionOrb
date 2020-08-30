@@ -23,9 +23,6 @@ firebase.initializeApp({
 // Retrieve an instance of Firebase Messaging so that it can handle background
 // messages.
 const messaging = firebase.messaging();
-messaging.usePublicVapidKey(
-  "BE-AmK0DgiR7FoX88JQJMqlGVhunDhzpo4PjlX27hyJQ5fbgkJkhX9qM4gM1_yHNZH7JNVmIamZkRbntXT55n7k"
-);
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
