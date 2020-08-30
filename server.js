@@ -27,6 +27,7 @@ app.use(
           "https://*.google.com",
           "https://*.gstatic.com",
           "https://use.fontawesome.com",
+          "'unsafe-inline'"
         ],
         "style-src": ["*"],
         "img-src": ["*", "data:"],
