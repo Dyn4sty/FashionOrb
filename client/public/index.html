@@ -5,15 +5,20 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="author" content="Lior Kasha">
+    <meta name="author" content="Lior Kasha" />
     <meta property="og:image" content="%PUBLIC_URL%/TheFashionOrb.png" />
+    <meta name="description" content="FashionOrb" />
     <meta
-      name="description"
-      content="FashionOrb"
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https://fashionorb.herokuapp.com:5000 https://*.gstatic.com  https://use.fontawesome.com https://*.google.com https://*.googleapis.com; style-src 'self' 'unsafe-inline' *; img-src * data:; upgrade-insecure-requests; form-action 'self'; "
     />
-    
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://use.fontawesome.com/3b9c6516fc.js"></script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -35,5 +40,8 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
-  <script src="https://www.google.com/recaptcha/api.js?&render=6Ld7x_8UAAAAAB_OfjERC6aaKAG1ct-7zZ8vOJQy&hl=en"></script>
-  </html>
+  <script
+    defer
+    src="https://www.google.com/recaptcha/api.js?&render=6Ld7x_8UAAAAAB_OfjERC6aaKAG1ct-7zZ8vOJQy&hl=en"
+  ></script>
+</html>
