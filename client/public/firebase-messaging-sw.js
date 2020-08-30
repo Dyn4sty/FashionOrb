@@ -22,13 +22,16 @@ firebase.initializeApp({
 
 // Retrieve an instance of Firebase Messaging so that it can handle background
 // messages.
-const messaging = firebase.messaging();
+const messaging = firebase.messaging.isSupported() ? firebase.messaging() : null
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("./firebase-messaging-sw.js")
-    .then(function (registration) {
-      console.log("Service Worker Registered");
-      messaging.useServiceWorker(registration);
-    });
+
+if (messaging) {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("./firebase-messaging-sw.js")
+      .then(function (registration) {
+        console.log("Service Worker Registered");
+        messaging.useServiceWorker(registration);
+      });
+  }
 }

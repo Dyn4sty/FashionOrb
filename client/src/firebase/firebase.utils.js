@@ -87,16 +87,30 @@ export const getCurrentUser = () => {
   });
 };
 export const subscribeToNotifications = () => {
-  const messaging = firebase.messaging();
+  const messaging = firebase.messaging.isSupported()
+    ? firebase.messaging()
+    : null;
+    
+  if (!messaging) {
+    return;
+  }
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  } else if (Notification.permission === "granted") {
+    /// do smth
+  } else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        // do smth
+      }
+    });
+  }
   messaging.usePublicVapidKey(
     "BE-AmK0DgiR7FoX88JQJMqlGVhunDhzpo4PjlX27hyJQ5fbgkJkhX9qM4gM1_yHNZH7JNVmIamZkRbntXT55n7k"
   );
 
-  messaging
-    .requestPermission()
-    .then(() => messaging.getToken())
-    .then((token) => console.log(token))
-    .catch((err) => console.log(err));
+  // Let's check whether notification permissions have already been granted
 
   messaging.onMessage((payload) => {
     console.log("Message received. ", payload);
