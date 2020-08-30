@@ -17,26 +17,7 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        "default-src": [
-          "'self'",
-          "https://*.gstatic.com",
-          "https://use.fontawesome.com",
-        ],
-        "script-src": [
-          "'self'",
-          "https://*.google.com",
-          "https://*.gstatic.com",
-          "https://use.fontawesome.com",
-          "'unsafe-inline'",
-        ],
-        "style-src": ["'self'", "*", "'unsafe-inline'"],
-        "img-src": ["*", "data:"],
-        "upgrade-insecure-requests": [],
-        "frame-src": [
-          "'self'",
-          "https://*.google.com",
-          "https://fashionorb-f7827.firebaseapp.com/",
-        ],
+        "default-src": ["'self'", "*", "'unsafe-inline'"],
       },
     },
   })
