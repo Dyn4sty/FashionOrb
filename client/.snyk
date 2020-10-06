@@ -9930,3 +9930,7 @@ patch:
         patched: '2020-09-10T11:33:28.493Z'
     - snyk > snyk-docker-plugin > snyk-nodejs-lockfile-parser > graphlib > lodash:
         patched: '2020-09-10T12:23:27.578Z'
+    - react-bootstrap > @restart/hooks > lodash:
+        patched: '2020-10-06T04:08:28.694Z'
+    - react-bootstrap > react-overlays > @restart/hooks > lodash:
+        patched: '2020-10-06T04:08:28.694Z'
