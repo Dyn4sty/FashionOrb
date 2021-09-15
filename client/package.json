@@ -5,7 +5,7 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "@sweetalert/with-react": "^0.1.1",
-    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/jest-dom": "^5.1.0",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.2",
@@ -28,7 +28,7 @@
     "reselect": "^4.0.0",
     "styled-components": "^5.0.1",
     "sweetalert": "^2.1.2",
-    "snyk": "^1.393.0"
+    "snyk": "^1.465.0"
   },
   "scripts": {
     "start": "react-scripts start",
