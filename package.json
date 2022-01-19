@@ -21,7 +21,7 @@
     "express": "^4.16.4",
     "express-sslify": "^1.2.0",
     "helmet": "^4.1.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.1.1",
     "stripe": "^6.36.0"
   },
   "devDependencies": {
