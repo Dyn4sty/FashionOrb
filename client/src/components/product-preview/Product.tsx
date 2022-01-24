@@ -16,7 +16,7 @@ import {
 } from "./Product.styles";
 import CommentList from "./Comments";
 import Editor from "./Editor";
-import { Comment, Avatar, Rate, Image } from "antd";
+import { Comment, Avatar, Rate, Image, CommentProps } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { firestore } from "../../firebase/firebase.utils";
@@ -30,8 +30,7 @@ interface matchProp {
   };
   url: string;
 }
-interface Comment {
-  author: string;
+interface IComment extends CommentProps {
   user?: any;
 }
 interface itemProp {
@@ -40,7 +39,7 @@ interface itemProp {
   imageUrl: string;
   sizes: string[];
   collectionId: string;
-  comments: Comment[];
+  comments: IComment[];
   category: string;
   id: string;
 }
