@@ -11,7 +11,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import PublicRoute from "../../routes/public-route";
 import PageNotFound from "../PageNotFound/PageNotFound";
 
-const LoginAndRegister = ({ location, match }) => {
+const LoginAndRegister = ({ location }) => {
   useEffect(() => {
     const badge = document.querySelector(".grecaptcha-badge");
     if (badge) {
@@ -23,8 +23,6 @@ const LoginAndRegister = ({ location, match }) => {
       }
     };
   }, []);
-
-  // const location = useLocation();
   const currentKey = location.pathname.split("/auth")[1] || "/";
   return (
     <SignPageContainer>
@@ -62,13 +60,11 @@ const LoginAndRegister = ({ location, match }) => {
               <div className="fades">
                 <Switch>
                   <PublicRoute
-                    restricted={true}
                     exact
                     path="/auth"
                     component={SignIn}
                   />
                   <PublicRoute
-                    restricted={true}
                     exact
                     path="/auth/signup"
                     component={Signup}

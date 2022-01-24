@@ -1,14 +1,17 @@
-import React from 'react';
-import {ReactComponent as GoogleIcon} from '../../assets/Google.svg';
-import { GoogleButtonContainer, GoogleIconWrapper } from './GoogleButton.styles'
+import React from "react";
+import { ReactComponent as GoogleIcon } from "../../assets/Google.svg";
+import {
+  GoogleButtonContainer,
+  GoogleIconWrapper,
+} from "./GoogleButton.styles";
 
-const GoogleButton = ({children, ...otherProps}) => (
-<GoogleButtonContainer  {...otherProps}>
+const GoogleButton = ({ children, ...otherProps }) => (
+  <GoogleButtonContainer {...otherProps}>
     <GoogleIconWrapper>
-        <GoogleIcon />
+      <GoogleIcon />
     </GoogleIconWrapper>
     <span>{children}</span>
-</GoogleButtonContainer>
-)
+  </GoogleButtonContainer>
+);
 
-export default GoogleButton
+export default GoogleButton;

@@ -35,10 +35,7 @@ export const ContactContainer = styled.div`
   h5 {
     font-weight: 400;
     color: #963484;
-    font-size: 12px;
-    font-size: 0.8571428571rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    font-size: 20px;
     text-align: center;
   }
 `;

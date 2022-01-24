@@ -1,18 +1,14 @@
-import { connect } from 'react-redux';
-import { compose } from 'redux'
-import WithSpinner from '../../components/with-spinner/with-spinner'
-import { selectCurrentUser } from '../../redux/user/user.selectors'
-import CheckoutPage from './checkout'
-import { createStructuredSelector } from 'reselect';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import Checkout from "./checkout";
+const promise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
 
-
-const mapStateToProps = createStructuredSelector({
-    isLoading: state => !selectCurrentUser(state)
-})
-
-const CheckoutContainer = compose (
-    connect(mapStateToProps),
-    WithSpinner,
-)(CheckoutPage)  // Same as connect(mapStateToProps)( WithSpinner(CollectionPage) )
-
-export default CheckoutContainer
+export default function CheckoutContainer(props) {
+  return (
+    <div className="App">
+      <Elements stripe={promise}>
+        <Checkout {...props} />
+      </Elements>
+    </div>
+  );
+}

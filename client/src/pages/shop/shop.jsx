@@ -1,11 +1,12 @@
-import React, { useState, lazy, Suspense, useEffect } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { Switch } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
+
 import Spinner from "../../components/Spinner/Spinner";
 import ProductContainer from "../../components/product-preview/product.container";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import PublicRoute from "../../routes/public-route";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const CollectionsOverviewContainer = lazy(() =>
   import("../../components/collections-overview/collections-overview.container")
@@ -14,12 +15,11 @@ const CollectionPageContainer = lazy(() =>
   import("../collection/collection.container")
 );
 
-export const ShopPage = ({ fetchCollectionsStart, match, location }) => {
-  useState(() => fetchCollectionsStart(), [fetchCollectionsStart]);
-
+export const ShopPage = ({ match, location }) => {
+  const dispatch = useDispatch(fetchCollectionsStart);
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+    dispatch(fetchCollectionsStart());
+  }, [dispatch]);
 
   const currentKey = location.pathname.split("/shop")[1] || "/";
 
@@ -32,7 +32,7 @@ export const ShopPage = ({ fetchCollectionsStart, match, location }) => {
           classNames="pageSlider"
         >
           <div className="fades">
-            <Switch>
+            <Switch location={location}>
               <PublicRoute
                 restricted={false}
                 exact
@@ -58,8 +58,4 @@ export const ShopPage = ({ fetchCollectionsStart, match, location }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
-});
-
-export default connect(null, mapDispatchToProps)(React.memo(ShopPage));
+export default React.memo(ShopPage);

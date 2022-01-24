@@ -1,0 +1,12 @@
+{
+  "homepage": {
+    "Arrivals": "מוצרים חדשים",
+    "Summer Trends": "גלו את הטרנדים של הקיץ",
+    "Eligible Items": "$על מוצרים נבחרים בקנייה מעל 100 ",
+    "Jackets": "ג'קטים"
+  },
+  "sidedrawer": {
+    "cart": "סל קניות",
+    "cart_empty": "סל הקניות שלך ריק"
+  }
+}

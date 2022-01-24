@@ -32,7 +32,6 @@ export const BannerWrapper = styled.div`
     };
     
     h1{
-        font-weight: 700;
         font-size: 43px;
         margin: 1rem 0;
     }

@@ -5,14 +5,16 @@ export const MyContainer = styled.div`
   @media screen and (max-width: 768px) {
     height: auto;
   }
+  .ant-image > img {
+    width: 500px;
+  }
 `;
 export const NewArrivalBadge = styled.p`
   background: green;
   width: 50px;
   color: white;
   font-size: 12px;
-  font-weight: bold;
-  font-family: blorado !important;
+  font-weight: 500;
   text-align: center;
   @media screen and (max-width: 768px) {
     align-self: center;
@@ -21,7 +23,7 @@ export const NewArrivalBadge = styled.p`
 export const PriceContent = styled.p`
   color: #d01345;
   font-size: 26px;
-  font-weight: bold;
+  font-weight: 400;
   padding-top: 10px;
 `;
 export const StyledCol = styled(Col)`

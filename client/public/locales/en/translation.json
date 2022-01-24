@@ -1,0 +1,12 @@
+{
+  "homepage": {
+    "Arrivals": "New Arrivals",
+    "Summer Trends": "Enjoy This Summer Trends ",
+    "Eligible Items": "On Eligible Items in order of $100 or more",
+    "Jackets": "Jackets"
+  },
+  "sidedrawer": {
+    "cart": "Shopping Bag",
+    "cart_empty": "Your Shopping bag is empty"
+  }
+}

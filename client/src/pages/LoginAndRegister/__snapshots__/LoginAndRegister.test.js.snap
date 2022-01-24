@@ -1,8 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render SignInAndRegister component 1`] = `
+exports[`should render LoginAndRegister component 1`] = `
 <styled.div>
-  <Connect(SignIn) />
-  <Connect(SignUp) />
+  <Styled(Component) />
+  <styled.div>
+    <Link
+      className="activetab"
+      to="/auth"
+    >
+      Login
+    </Link>
+    <Link
+      className=""
+      to="/auth/signup"
+    >
+      Register
+    </Link>
+  </styled.div>
+  <TransitionGroup
+    childFactory={[Function]}
+    className="App"
+    component="div"
+  >
+    <CSSTransition
+      classNames="pageSlider"
+      key="/"
+      mountOnEnter={false}
+      timeout={
+        Object {
+          "enter": 800,
+          "exit": 0,
+        }
+      }
+      unmountOnExit={true}
+    >
+      <div
+        className="fades"
+      >
+        <Switch>
+          <Connect(PublicRoute)
+            component={
+              Object {
+                "$$typeof": Symbol(react.memo),
+                "WrappedComponent": [Function],
+                "compare": null,
+                "displayName": "Connect(SignIn)",
+                "type": [Function],
+              }
+            }
+            exact={true}
+            path="/auth"
+            restricted={true}
+          />
+          <Connect(PublicRoute)
+            component={
+              Object {
+                "$$typeof": Symbol(react.memo),
+                "WrappedComponent": [Function],
+                "compare": null,
+                "displayName": "Connect(SignUp)",
+                "type": [Function],
+              }
+            }
+            exact={true}
+            path="/auth/signup"
+            restricted={true}
+          />
+        </Switch>
+      </div>
+    </CSSTransition>
+  </TransitionGroup>
 </styled.div>
 `;

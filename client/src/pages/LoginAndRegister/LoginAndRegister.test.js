@@ -1,7 +1,9 @@
 import React from "react";
 import { shallow } from "enzyme";
-import SignInAndRegister from "./LoginAndRegister";
+import LoginAndRegister from "./LoginAndRegister";
 
-it("should render SignInAndRegister component", () => {
-  expect(shallow(<SignInAndRegister />)).toMatchSnapshot();
+it("should render LoginAndRegister component", () => {
+  expect(
+    shallow(<LoginAndRegister location={{ pathname: "/auth" }} />)
+  ).toMatchSnapshot();
 });

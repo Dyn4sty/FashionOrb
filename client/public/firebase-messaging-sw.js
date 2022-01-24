@@ -22,8 +22,9 @@ firebase.initializeApp({
 
 // Retrieve an instance of Firebase Messaging so that it can handle background
 // messages.
-const messaging = firebase.messaging.isSupported() ? firebase.messaging() : null
-
+const messaging = firebase.messaging.isSupported()
+  ? firebase.messaging()
+  : null;
 
 if (messaging) {
   if ("serviceWorker" in navigator) {

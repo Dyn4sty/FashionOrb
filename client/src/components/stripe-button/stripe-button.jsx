@@ -10,7 +10,7 @@ const StripeCheckoutButton = ({ price, dispatch, history }) => {
   const publishableKey = "pk_test_ghjMMq6QNw2yKFSPwbdgL8CV00i3EAIXXG";
 
   const onToken = (token) => {
-    fetch("http://localhost:5000/payment", {
+    fetch("/payment", {
       method: "POST",
       mode: "cors",
       headers: {

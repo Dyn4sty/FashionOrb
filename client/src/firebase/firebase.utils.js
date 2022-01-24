@@ -1,7 +1,9 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
-import "firebase/messaging";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import "firebase/compat/messaging";
+import "firebase/compat/storage";
+import { sections } from "../components/directory/directory.data";
 
 const config = {
   apiKey: "AIzaSyD0mU-gIlw-9NVsQBH-wLDgFUu0Wwj-ZOA",
@@ -19,18 +21,29 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
-
   const snapShot = await userRef.get();
 
   // Creating user in db
   if (!snapShot.exists) {
-    const { displayName, email } = userAuth;
+    const { displayName, email, photoURL } = userAuth;
     const createdAt = new Date();
     try {
       await userRef.set({
         displayName,
         email,
         createdAt,
+        photoURL,
+        billing: {
+          first_name: "",
+          last_name: "",
+          company: "",
+          country: "",
+          address_1: "",
+          address_2: "",
+          city: "",
+          postcode: "",
+          phone: "",
+        },
         ...additionalData,
       });
     } catch (error) {
@@ -90,39 +103,83 @@ export const subscribeToNotifications = () => {
   const messaging = firebase.messaging.isSupported()
     ? firebase.messaging()
     : null;
-    
   if (!messaging) {
     return;
   }
   if (!("Notification" in window)) {
     alert("This browser does not support desktop notification");
   } else if (Notification.permission === "granted") {
-    /// do smth
   } else if (Notification.permission !== "denied") {
-    Notification.requestPermission().then(function (permission) {
-      // If the user accepts, let's create a notification
-      if (permission === "granted") {
-        // do smth
-      }
-    });
+    return Notification.requestPermission().then((permission) => permission);
   }
-  messaging.usePublicVapidKey(
-    "BE-AmK0DgiR7FoX88JQJMqlGVhunDhzpo4PjlX27hyJQ5fbgkJkhX9qM4gM1_yHNZH7JNVmIamZkRbntXT55n7k"
-  );
-
-  // Let's check whether notification permissions have already been granted
 
   messaging.onMessage((payload) => {
     console.log("Message received. ", payload);
     // ...
   });
 };
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
 
+export const uploadImages = () => {
+  const toDataURL = (url) =>
+    fetch(url)
+      .then((response) => response.blob())
+      .then(
+        (blob) =>
+          new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(blob);
+          })
+      );
+
+  const ref = storage.ref();
+  sections.forEach(async (item) => {
+    try {
+      const itemUrl = item?.imageUrl.split("/").slice(-1)[0];
+      const child = ref.child(`/${itemUrl}`);
+      const data = await toDataURL(item.imageUrl);
+      child.putString(data, "data_url");
+    } catch (err) {
+      console.log(err);
+    }
+  });
+};
+const storage = firebase.storage();
+export const auth = firebase.auth();
+
+export const firestore = firebase.firestore();
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: "select_account" });
 
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
+// (async () => {
+//   try {
+//     const batch = firestore.batch();
+//     const snapShot = await firestore.collection("collections").get();
+//     const lst = snapShot.docs.map((doc) => {
+//       const obj = doc.data();
+//       for (const item of obj.items) {
+//         item.imageUrl = `/images/${item.category}/${item.imageUrl
+//           .split("/")
+//           .slice(-1)[0]
+//           .replaceAll(item.category, "")}`;
+//         console.log(item.imageUrl);
+//       }
+//       // batch.update(doc.ref, obj);
+//       return doc;
+//       //   return doc.data().items.map((item) => {
+//       //     return {
+//       //       ...item,
+//       //       comments: [],
+//       //     };
+//       //   });
+//     });
+//     await batch.commit();
+//     console.log(lst);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// })();
 
 export default firebase;

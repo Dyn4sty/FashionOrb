@@ -1,42 +1,29 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import Spinner from "../components/Spinner/Spinner";
-  import { createStructuredSelector } from "reselect";
-import {
-  selectCurrentUser,
-  selectIsFetching,
-} from "../redux/user/user.selectors";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../redux/user/user.selectors";
 
-const PublicRoute = ({
-  component: Component,
-  restricted,
-  currentUser,
-  isFetching,
-  ...rest
-}) => {
+const PublicRoute = ({ component: Component, restricted, ...rest }) => {
+  const auth = useSelector(selectCurrentUser);
   return (
-    // restricted = false meaning public route
-    // restricted = true meaning restricted route
-    <Route
-      {...rest}
-      render={(props) => {
-        if (!restricted) {
-          return <Component {...props} />;
+    <>
+      <Route
+        {...rest}
+        render={(props) =>
+          auth && restricted ? (
+            <Redirect
+              to={{
+                pathname: "/",
+                state: { from: props.location },
+              }}
+            />
+          ) : (
+            <Component {...props} />
+          )
         }
-        if (isFetching) {
-          return <Spinner />;
-        } else if (currentUser && restricted) {
-          return <Redirect to="/" />;
-        }
-        return <Component {...props} />;
-      }}
-    />
+      />
+    </>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  isFetching: selectIsFetching,
-});
-export default connect(mapStateToProps)(PublicRoute);
+export default PublicRoute;

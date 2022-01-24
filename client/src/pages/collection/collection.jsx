@@ -12,6 +12,7 @@ import BannerItem from "../../components/banner-item/banner-item";
 import TabDiv from "../../components/tab-div/tab-div.components";
 import PageNotFound from "../PageNotFound/PageNotFound";
 
+import rootBanner from "../../assets/rootBanner.jpg";
 const CollectionPage = ({ collection, collectionKeys }) => {
   const { collectionId } = useParams();
   if (!collectionKeys.includes(collectionId)) {
@@ -21,10 +22,10 @@ const CollectionPage = ({ collection, collectionKeys }) => {
     <>
       <BannerItem
         bannertype="center"
-        background="https://i.ibb.co/nP6R16G/S1.jpg"
+        background={rootBanner}
         bannerheight="500px"
       >
-        <h1>{collectionId.toUpperCase()}</h1>
+        <h1 style={{ textTransform: "capitalize" }}>{collectionId}</h1>
         <p>
           <Link to="/shop">{"Shop > "}</Link> <b>{collectionId}</b>
         </p>

@@ -39,7 +39,7 @@ export function* getSnapshotFromUserAuth(
       const { displayName } = yield userSnapshot.data();
       yield swal(
         "Success",
-        `${displayName} You Signin Sucessfully! Welcome.`,
+        `${displayName} You Signed in Sucessfully! Welcome.`,
         "success"
       );
     }
@@ -48,19 +48,23 @@ export function* getSnapshotFromUserAuth(
   }
 }
 
-export function* signInWithGoogle() {
+export function* signInWithGoogle({ payload: { history, from } }) {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
     yield getSnapshotFromUserAuth(user);
+    yield history.replace(from);
   } catch (error) {
     yield put(signInFailure(error));
   }
 }
 
-export function* signInWithEmail({ payload: { email, password } }) {
+export function* signInWithEmail({
+  payload: { email, password, history, from },
+}) {
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     yield getSnapshotFromUserAuth(user);
+    yield history.replace(from);
   } catch (error) {
     yield put(signInFailure(error));
   }
@@ -77,7 +81,7 @@ export function* signUp({ payload: { email, password, displayName } }) {
 
 export function* signInAfterSignUp({ payload: { user, additionalData } }) {
   yield getSnapshotFromUserAuth(user, additionalData, false);
-  yield swal("Success", "You Registerd Successfully!", "success");
+  yield swal("Success", "You Registered Successfully!", "success");
 }
 
 export function* isUserAuthenticated() {
@@ -85,7 +89,7 @@ export function* isUserAuthenticated() {
     const userAuth = yield call(getCurrentUser);
     if (!userAuth)
       return yield put(
-        signInFailure({ code: "auth/cant-presist", message: "User Not Found" }, false)
+        signInFailure({ code: "auth/cant-presist", message: "User Not Found" })
       );
     yield getSnapshotFromUserAuth(userAuth, null, false);
   } catch (error) {
@@ -122,7 +126,6 @@ export function* onGoogleSignInStart() {
 export function* onSignUpStart() {
   yield takeLatest(UserActionTypes.SIGN_UP_START, signUp);
 }
-
 export function* onEmailSignInStart() {
   yield takeLatest(UserActionTypes.EMAIL_SIGN_IN_START, signInWithEmail);
 }

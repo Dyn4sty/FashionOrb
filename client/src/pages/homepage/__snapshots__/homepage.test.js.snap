@@ -11,12 +11,16 @@ exports[`should render HomePage component 1`] = `
       className="flex_arrange"
     >
       <p>
-        New Arrivals
+        homepage.Arrivals
       </p>
       <h1>
-        Enjoy This 
-        <br />
-         Summer Trends
+        <Trans
+          i18nKey="homepage.Summer Trends"
+        >
+          Enjoy This 
+          <br />
+           Summer Trends
+        </Trans>
       </h1>
       <p>
         On Eligible Items in order of $100 or more

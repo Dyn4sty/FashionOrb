@@ -1,46 +1,165 @@
-.checkout-page {
-  width: 55%;
-  min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 50px auto 0;
-  @media screen and(max-width: 1024px) {
-    width:auto;
-    padding: 15px;
-  }
-
-  .checkout-header {
-    width: 100%;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid darkgrey;
-
-    .header-block {
-      text-transform: capitalize;
-      width: 23%;
-
-      &:last-child {
-        width: 8%;
-      }
-    }
-  }
-
-  .total {
-    margin-top: 30px;
-    margin-left: auto;
-    font-size: 36px;
-  }
-  button {
-    margin-left: auto;
-    margin-top: 50px;
-  }
-  .test-warning {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 24px;
-    color: red;
-  }
+.inner-intro {
+  height: auto !important;
+  background: #fbfbfb;
+  padding: 10px 0;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
+  -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
+}
+inner-intro .container {
+  height: 100%;
+}
+.mb-7 {
+  margin-bottom: 70px;
+}
+.checkout-review-order {
+  border: 1px solid #e5e5e5;
+  padding: 15px 30px 0 30px;
+  position: relative;
+}
+.checkout-review-order .checkout-review-order-table {
+  margin: 0 -1px 24px 0;
+  text-align: left;
+  width: 100%;
+  border-radius: 0;
+  border: none;
+  border-collapse: collapse;
+}
+.checkout-review-order .checkout-review-order-table td {
+  vertical-align: middle;
+  line-height: 1.5em;
+  border: none;
+  border-color: rgba(255, 255, 255, 0.08);
+  padding: 15px 0px;
+  font-size: 14px;
+  border-top: 1px solid #ececec;
+}
+.checkout-review-order .checkout-review-order-table th {
+  font-weight: 500;
+  padding: 15px 0;
+  line-height: 1.5em;
+  background: 0 0;
+  border: none;
+  font-size: 18px;
+  color: #323232;
+  border-top: 1px solid #ececec;
+}
+.checkout-review-order .checkout-review-order-table .cart-subtotal td {
+  font-weight: 400;
+  font-size: 18px;
+  color: #323232;
+}
+.checkout-review-order .checkout-review-order-table #shipping_method {
+  list-style: none outside;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+.checkout-review-order .checkout-review-order-table #shipping_method li {
+  margin: 0 0 0.5em;
+  line-height: 1.5em;
+  list-style: none outside;
+}
+.checkout-review-order .checkout-review-order-table #shipping_method li input {
+  margin: 3px 0.4375em 0 0;
+  vertical-align: top;
+}
+form input[type="radio"],
+form input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+}
+.checkout-review-order .checkout-review-order-table #shipping_method li label {
+  display: inline;
+}
+.checkout-review-order
+  .checkout-review-order-table
+  #shipping_method
+  li
+  label
+  .amount {
+  font-weight: 400;
+}
+.checkout-review-order .checkout-review-order-table .order-total td {
+  color: #04d39f;
+  font-size: 26px;
+}
+.checkout-review-order .payment_methods {
+  margin: 0;
+  list-style: none outside;
+  text-align: left;
+  padding: 0;
+  border: none;
+}
+.checkout-review-order .place-order {
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  margin-left: -30px;
+  margin-right: -30px;
+  padding-bottom: 0;
+  width: auto;
+}
+.checkout-review-order .place-order .terms-and-conditions-wrapper p {
+  margin: 0 30px 30px;
 }
 
+.checkout-review-order #place_order {
+  font-size: 20px;
+  width: 100%;
+  text-transform: uppercase;
+  // border: none;
+  &:hover {
+    background: #04d39f;
+    color: #fff;
+  }
+}
+.checkout-review-order .payment_method_paypal img {
+  max-height: 52px;
+  vertical-align: middle;
+  margin: -2px 0 0 .5em;
+  padding: 0;
+  position: relative;
+  box-shadow: none;
+}
+#card-error {
+  color: rgb(105, 115, 134);
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 12px;
+  text-align: center;
+  
+}
+
+#card-element {
+  border-radius: 4px 4px 0 0;
+  padding: 12px;
+  border: 1px solid rgba(50, 50, 93, 0.1);
+  max-height: 44px;
+  width: 100%;
+  background: white;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+#payment-request-button {
+  margin-bottom: 32px;
+}
+.result-message {
+  line-height: 22px;
+  font-size: 16px;
+}
+
+.result-message a {
+  color: rgb(89, 111, 214);
+  font-weight: 600;
+  text-decoration: none;
+}
+.hidden {
+  display: none;
+}
+.payment_method_paypal label {
+  font-size: 1rem;
+  padding: 0.5rem;
+}

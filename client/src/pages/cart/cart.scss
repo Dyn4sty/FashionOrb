@@ -1,0 +1,41 @@
+@keyframes cartEmptyOpening {
+    from {
+      transform: translate(0, calc(-50% + 35px));
+      opacity: 0;
+    }
+  
+    to {
+      transform: translate(0, -50%);
+      opacity: 1;
+    }
+  }
+  
+.EmptyState {
+  margin: 140px 0;
+  text-align: center;
+  transform: translate(0%, -50%);
+  -webkit-animation: cartEmptyOpening 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: cartEmptyOpening 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.EmptyState__Action {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 641px) {
+  .EmptyState {
+    margin: 200px 0;
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  .EmptyState {
+    margin: 250px 0;
+  }
+}
+@media screen and (max-width: 640px) {
+  .hidden-phone {
+    display: none !important;
+  }
+}

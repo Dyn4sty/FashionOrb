@@ -1,28 +1,20 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
-import Spinner from "../components/Spinner/Spinner";
-
-// import { createStructuredSelector } from "reselect";
-import {
-  selectCurrentUser,
-  selectIsFetching,
-} from "../redux/user/user.selectors";
+import { selectCurrentUser } from "../redux/user/user.selectors";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const isFetching = useSelector(selectIsFetching);
-  const currentUser = useSelector(selectCurrentUser);
+  const auth = useSelector(selectCurrentUser);
   return (
     <Route
       {...rest}
-      render={(props) => {
-        if (isFetching) {
-          return <Spinner />;
-        } else if (!currentUser) {
-          return <Redirect to="/auth" />;
-        }
-        return <Component {...props} />;
-      }}
+      render={(props) =>
+        auth ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/auth", state: { from: props.location } }} />
+        )
+      }
     />
   );
 };
