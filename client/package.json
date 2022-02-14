@@ -6,7 +6,7 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^1.7.0",
     "@stripe/stripe-js": "^1.22.0",
-    "antd": "^4.18.4",
+    "antd": "^4.18.5",
     "bootstrap": "^5.1.3",
     "firebase": "^9.6.4",
     "i18next": "^21.6.7",
