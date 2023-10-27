@@ -65,7 +65,7 @@
     "@stripe/react-stripe-js": "^1.7.0",
     "@stripe/stripe-js": "^1.22.0",
     "@types/compression": "^1.7.2",
-    "axios": "^0.25.0",
+    "axios": "^1.6.0",
     "bcrypt": "^5.0.1",
     "command-line-args": "^5.2.0",
     "compression": "^1.7.4",
