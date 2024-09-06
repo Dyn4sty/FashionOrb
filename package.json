@@ -65,7 +65,7 @@
     "@stripe/react-stripe-js": "^1.7.0",
     "@stripe/stripe-js": "^1.22.0",
     "@types/compression": "^1.7.2",
-    "axios": "^0.25.0",
+    "axios": "^1.6.8",
     "bcrypt": "^5.0.1",
     "command-line-args": "^5.2.0",
     "compression": "^1.7.4",
@@ -78,7 +78,7 @@
     "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
     "node-fetch": "^3.2.0",
-    "stripe": "^8.199.0"
+    "stripe": "^8.213.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
